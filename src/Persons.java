@@ -6,7 +6,7 @@ public class Persons {
     int age;
     double budget;
     private int password;
-    ArrayList<Apartments> myRealty = new ArrayList<Apartments>();
+    ArrayList<RealEstate> myRealty = new ArrayList<RealEstate>();
 
     public Persons () {
         Scanner sc = new Scanner(System.in);
@@ -42,8 +42,8 @@ public class Persons {
             System.out.printf("Name: %s. Age: %d. Current budget: %.2f.\n", this.name, this.age, this.budget);
             System.out.println("My acquired apartments:");
             int counts = 0;
-            for (Apartments item : this.myRealty) {
-                item.getInfoAboutApartment(this.password, verificationCode);
+            for (RealEstate item : this.myRealty) {
+                item.getInfoAbout();
                 counts += 1;
             }
             if (counts == 0) {
@@ -62,24 +62,24 @@ public class Persons {
         return password;
     }
 
-    public void makeDeal (int idApartmentToBuy, ArrayList<RealEstate> list) {
+    public void makeDeal (int idToBuy, ArrayList<RealEstate> list) {
         int verificationCode = Persons.askPasswordToVerification();
         if (this.password == verificationCode) {
             int counts = 0;
             for (RealEstate item : list) {
-                if (item.id == idApartmentToBuy) {
+                if (item.id == idToBuy) {
                     counts += 1;
                     if (this.budget >= item.cost && item.forSale) {
                         System.out.print("Are you sure, that you wont to buy: ");
-                        item.getInfoAboutApartment(this.password, verificationCode);
+                        item.getInfoAbout();
                         System.out.println("Enter 0 for No, 1 for Yes.");
                         Scanner sc = new Scanner(System.in);
                         int answer = sc.nextInt();
                         sc.nextLine();
                         if (answer == 1) {
                             item.makeForSaleOrNot();
-                            Apartments apartmentToBuy = item;
-                            this.myRealty.add(apartmentToBuy);
+                            RealEstate ToBuy = item;
+                            this.myRealty.add(ToBuy);
                             //list.remove(item);
                         }
                     } else {

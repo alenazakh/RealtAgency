@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public interface GoodsItem {
 
     void setCost ();
@@ -5,10 +7,6 @@ public interface GoodsItem {
     double getCost ();
 
     void makeForSaleOrNot ();
-
-    void printListAllForSale();
-
-    void printListInBudgetForSaleAll();
 
 
 }

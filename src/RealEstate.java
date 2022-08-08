@@ -4,28 +4,15 @@ import java.util.Scanner;
 public class RealEstate implements GoodsItem{
     int id;
     String category;
-    String title;
     Double cost;
     boolean forSale;
     String address;
     double area;
 
 
-    public RealEstate () {
-        this.category = "Real Estate";
-        this.id = 0;
-        this.title = "Unknown";
-        this.address = "Unknown";
-        this.area = 0.0;
-        this.cost = 0.0;
-        this.forSale = true;
-    }
-
-
-    public RealEstate (int id, String title, String address, double area, double cost) {
+    public RealEstate (int id, String address, double area, double cost) {
         this.category = "Real Estate";
         this.id = id;
-        this.title = title;
         this.address = address;
         this.area = area;
         this.cost = cost;
@@ -48,7 +35,6 @@ public class RealEstate implements GoodsItem{
         } else {
             this.forSale = false;
         }
-
     }
 
     public static void printListAllForSale (Persons person, ArrayList<RealEstate> list) {
@@ -56,7 +42,7 @@ public class RealEstate implements GoodsItem{
         if (person.getPassword() == verificationCode) {
             for (RealEstate item : list) {
                 if (item.forSale) {
-                    System.out.printf("ID: %d. Address: %s. Area: %.1f. Cost: %.2f.\n", item.id, item.address, item.area, item.cost);
+                    item.getInfoAbout();
                 }
             }
         } else {
@@ -69,12 +55,16 @@ public class RealEstate implements GoodsItem{
         if (person.getPassword() == verificationCode) {
             for (RealEstate item : list) {
                 if (item.forSale && item.cost <= person.budget) {
-                    System.out.printf("ID: %d. Address: %s. Area: %.1f. Cost: %.2f.\n", item.id, item.address, item.area, item.cost);
+                    item.getInfoAbout();
                 }
             }
         } else {
             System.out.println("You entered the wrong password. Try again.");
         }
+    }
+
+    protected void getInfoAbout() {
+        System.out.printf("ID: %d. Address: %s. Area: %.1f. Cost: %.2f.\n", this.id, this.address, this.area, this.cost);
     }
 
 }

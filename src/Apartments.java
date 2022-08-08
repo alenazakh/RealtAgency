@@ -1,31 +1,26 @@
 import java.util.ArrayList;
 
 public class Apartments extends RealEstate {
+    int floor;
     int numberOfRooms;
+    String title;
 
 
-    public Apartments (int id, double cost, String title, String address, double area) {
+
+
+    public Apartments(int id, String address, double area, double cost, int floor, int numberOfRooms) {
+        super(id, address, area, cost);
         this.title = "Apartment";
-        this.address = address;
-        this.area = area;
+        this.floor = floor;
+        this.numberOfRooms = numberOfRooms;
     }
 
-    public void getInfoAboutApartment(Persons person) {
-        int verificationCode = Persons.askPasswordToVerification();
-        if (person.getPassword() == verificationCode) {
-            System.out.printf("ID: %d. Address: %s. Area: %.1f. Cost: %.2f.\n", this.id, this.address, this.area, this.cost);
-        } else {
-            System.out.println("You entered the wrong password. Try again.");
-        }
-    }
 
-    public void getInfoAboutApartment(int personsPassword, int verificationCode) {
-        if (personsPassword == verificationCode) {
-            System.out.printf("ID: %d. Address: %s. Area: %.1f. Cost: %.2f.\n", this.id, this.address, this.area, this.cost);
-        } else {
-            System.out.println("You entered the wrong password. Try again.");
-        }
+    @Override
+    protected void getInfoAbout() {
+        System.out.printf("ID: %d. Subcategory: %s. Title: %s. Address: %s. Area: %.1f. Floor: %d. Rooms: %d. " +
+                "Cost: %.2f.\n", this.id, this.category, this.title, this.address, this.area, this.floor,
+                this.numberOfRooms, this.cost);
     }
-
 
 }
