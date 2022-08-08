@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.SortedMap;
 
 public class Persons {
     String name;
@@ -63,11 +62,11 @@ public class Persons {
         return password;
     }
 
-    public void makeDeal (int idApartmentToBuy, ArrayList<Apartments> list) {
+    public void makeDeal (int idApartmentToBuy, ArrayList<RealEstate> list) {
         int verificationCode = Persons.askPasswordToVerification();
         if (this.password == verificationCode) {
             int counts = 0;
-            for (Apartments item : list) {
+            for (RealEstate item : list) {
                 if (item.id == idApartmentToBuy) {
                     counts += 1;
                     if (this.budget >= item.cost && item.forSale) {
@@ -78,7 +77,7 @@ public class Persons {
                         int answer = sc.nextInt();
                         sc.nextLine();
                         if (answer == 1) {
-                            item.makeNotForSale();
+                            item.makeForSaleOrNot();
                             Apartments apartmentToBuy = item;
                             this.myRealty.add(apartmentToBuy);
                             //list.remove(item);

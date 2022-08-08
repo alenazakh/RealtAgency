@@ -4,18 +4,16 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello. We help you to acquire the apartment of you dream.");
-        ArrayList<Apartments> allApartments = new ArrayList();
-        Apartments Apartment1 = new Apartments(1, "Serdicha St.", 60.0, 70000.0);
-        allApartments.add(Apartment1);
-        Apartments Apartment2 = new Apartments(2, "Grushevskaja St.", 52.0, 57000.0);
-        allApartments.add(Apartment2);
-        Apartments Apartment3 = new Apartments(3, "Asanalieva St.", 45.0, 46000.0);
-        allApartments.add(Apartment3);
-        Apartments Apartment4 = new Apartments(4, 100.0, 75000.0);
-        allApartments.add(Apartment4);
-        Apartments Apartment5 = new Apartments(5, "Mstislavca St.", 84.0, 120000.0);
-        allApartments.add(Apartment5);
-        Apartment4.makeNotForSale();
+        ArrayList<RealEstate> allRealty = new ArrayList<RealEstate>();
+        //Apartments Apartment1 = new Apartments(1, "Serdicha St.", 60.0, 70000.0);
+        //allApartments.add(Apartment1);
+        //Apartments Apartment2 = new Apartments(2, "Grushevskaja St.", 52.0, 57000.0);
+        //allApartments.add(Apartment2);
+        //Apartments Apartment3 = new Apartments(3, "Asanalieva St.", 45.0, 46000.0);
+        //allApartments.add(Apartment3);
+        //Apartments Apartment5 = new Apartments(5, "Mstislavca St.", 84.0, 120000.0);
+        //allApartments.add(Apartment5);
+        //Apartment4.makeForSaleOrNot();
         Persons currentUser = new Persons();
         String[] infoMenus = {"1 - Get my info.", "2 - Get info about apartments.", "3 - Change the budget.", "4 - Acquire the apartment.", "0 - Quit."};
         int menuItem;
@@ -46,11 +44,11 @@ public class Main {
                         scanner.nextLine();
                         switch (menuChoice) {
                             case 1:
-                                Apartments.printListAllForSaleApartments(currentUser, allApartments);
+                                Apartments.printListAllForSale(currentUser, allRealty);
                                 System.out.println("Remember the apartment ID to acquire specific apartment.");
                                 break;
                             case 2:
-                                Apartments.printListInBudgetForSaleAllApartments(currentUser, allApartments);
+                                Apartments.printListInBudgetForSaleAll(currentUser, allRealty;
                                 System.out.println("Remember the apartment ID to acquire specific apartment.");
                                 break;
                             default: System.out.println("Something is happening.\n");
@@ -65,7 +63,7 @@ public class Main {
                         System.out.println("Enter apartment ID for purchase:");
                         int idApartment = scanner.nextInt();
                         scanner.nextLine();
-                        currentUser.makeDeal(idApartment, allApartments);
+                        currentUser.makeDeal(idApartment, allRealty);
                         break;
                     default: System.out.println("Something is happening.\n");
                 }
